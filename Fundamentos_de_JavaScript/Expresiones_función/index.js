@@ -166,3 +166,148 @@ una funion puede ser persibida como una accion
 la podemos psar entre variables y ejecutarla cuando nosotros queramos.
 
  */
+
+
+
+/* Expresión de Función vs Declaración de Función */
+
+
+//Vemos las principales diferencias que hay entre las funciones por declaracion y expresion
+
+//1. La sintacxis como diferenciaslas en el codigo
+
+    //* delaracion de funcion: una funcion, declarada coomo uns instruccion separada, en el flujo de codigo principal
+    // Declaración de Función
+        /* function sum(a, b) {
+            return a + b;
+        } */
+
+    //* expresion de funcion: UNa funcion, creada dentro de una expresion o dentro de otra construccion sintactica.
+    // aqui, la funciones creada en el lado derecho de la "expresion de asignacion" =:
+
+        /*     // Expresión de Función
+        let sum = function(a, b) {
+            return a + b;
+        }; */
+
+// la direfencias mas significativa es cuando la funcion es creada por el motor de javaScript
+
+//UNa exprsion de funcion es creada cuando la ejecucion la alcanza y es utilizable de ahi en adelante.
+
+//UNa vex el flujo d ejecucion alcance el lado derecho de la asignacion "let sum=function.."-qui la fucnion es creada y puede ser usada(asignada, llamada ,etc ) de ahi en adelante.
+
+//una declaracion de funcion es diferente debido que puede ser llamada antes de su declaracion.
+
+//por ejemplo, una declaracion de funion global es visible desde todo el script, sin importar donde este.
+
+//esto se debe a alboritmos internos, que busca la declaracion de funciones globales y crea las funciones, podemos llamr a esto etapa de inicilizacion.
+
+// y depues de que se creen todlas las declaraciones de funciones, el resto del codigo se ejecuta. Entonces todo el script tendra accedo a todas esas funciones.
+
+//por ejemplo:
+
+
+sayHi4("Manuel");
+
+function sayHi4(name){
+    console.log(name);
+}
+
+// si fuera por expresion lo anterior no funcionaria.
+
+// otra caracteristica de las funciones por declaraciones es su alcance de bloques.
+
+//en modo estricto, cunado unna declaracion de funcion es definida dentro de un bloque de codifo, esta solo es visible dentro de ese bloque, mas no por fuera de el.
+
+//Por ejemplo, imaginemos que necesitamos declarar una función welcome() dependiendo de la variable age que obtengamos durante el tiempo de ejecución. Y luego planeamos usarlo algún tiempo después.
+
+//si utilizamos la Declaracion de funciones, no funcionara como se espera, veamos:
+
+let age= +prompt("Que edad tienes ?",18);
+
+
+if(age<18){
+
+    function welcome(){
+        console.log("Hola!");
+    }
+
+}else{
+    function welcome(){
+        console.log("Saludos!")
+    }
+}
+
+welcome();
+// aqui si intentamos llamar a la funcion por fuera del bloque del if no se ejecutara.
+
+// vemos un ejemplo donde si funcione el llamada de la funcion¿.
+
+let age1= +prompt("Que edad tienes ?",18);
+
+
+if(age1<18){
+    welcome();// esta fuciona bien debido que se llama dentro del bloque de codigo donde se crea la declaracion de funcion.
+
+    function welcome(){
+        console.log("Hola!");
+    }
+    
+    welcome() // esta fuciona bien debido que se llama dentro del bloque de codigo donde se crea la declaracion de funcion.
+}else{
+    function welcome(){
+        console.log("Saludos!")
+    }
+}
+
+welcome();// esta no funciona por que la esta llamando fuera del bloque de codigo.
+
+
+//¿Qué podemos hacer para que welcome sea visible fuera de ‘if’?
+
+
+
+// EL enfoque, seria utilziar la expresion de funcion y asignar welcome a la variable que se declara por fuera del bloque del if y que tiene visibilidad global:
+
+let age2= +prompt("Que edad tienes ?",18);
+
+let welcome1;
+
+
+if(age2<18){
+    //welcome(); // no funcionara debido que todavia la ejecucion no ha alcanzado la funcion
+
+    welcome1 = function(){
+        console.log("Hola!");
+    }
+     
+}else{
+    welcome1=function(){
+        console.log("Saludos!")
+    }
+}
+
+welcome1();
+
+
+// podemos simplificarla utilziando el operados ?:
+
+
+let age3= +prompt("Que edad tienes ?",18);
+
+
+let welcome2 = (age3<18) 
+    ? function(){console.log("Hola!")}
+    : function(){console.log("Saludos!")};
+
+welcome2();
+
+
+/* ¿Cuándo debo elegir la Declaración de Función frente a la Expresión de Función? 
+
+Como regla general, cuando necesitamos declarar una función, la primera que debemos considerar es la sintaxis de la Declaración de Función. Da más libertad en cómo organizar nuestro código, porque podemos llamar a tales funciones antes de que sean declaradas.
+
+…Pero si una Declaración de Función no nos conviene por alguna razón, o necesitamos declaración condicional (hemos visto un ejemplo), entonces se debe usar la Expresión de función.
+
+
+*/
