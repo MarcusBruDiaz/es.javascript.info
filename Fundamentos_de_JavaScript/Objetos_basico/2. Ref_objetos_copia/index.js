@@ -269,3 +269,5 @@ Por ejemplo, cuando un objeto tienen una propiedad “function”: */
 structuredClone({f: function() {}});
 
 //Las propiedades de función no están soportadas.
+
+/* Para manejar estos casos complejos podemos necesitar una combinación de métodos de clonación, escribir código personalizado o, para no reinventar la rueda, tomar una implementación existente, por ejemplo _.cloneDeep(obj) de la librería JavaScript lodash. */
