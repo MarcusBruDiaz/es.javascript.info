@@ -224,3 +224,75 @@ function User12(name){
 
 let sayHi1 = new User12('Marcos Bru');
 sayHi1.sayHi();
+
+
+
+/* TAREAS */
+
+
+/* 
+crear nueva Calculadora
+importancia: 5
+Crear una función constructora Calculator que crea objetos con 3 métodos:
+
+read() pide dos valores usando prompt y los guarda en las propiedades del objeto con los nombres a y b.
+sum() devuelve la suma de estas propiedades.
+mul() devuelve el producto de la multiplicación de estas propiedades.
+Por ejemplo: 
+*/
+
+
+
+function Calculadora(){
+    
+
+    this.read=function(){
+        this.a = +prompt("Digite primer numero",0);
+        this.b= +prompt("Digite segundo numero",0);
+    };
+
+    this.sum = function(){
+        alert(this.a + this.b);
+    };
+
+    this.mul=function(){
+        alert(this.a * this.b);
+    };
+}
+
+let read = new Calculadora();
+read.read();
+read.sum();
+read.mul();
+
+
+
+/* 
+Crear nuevo Acumulador
+importancia: 5
+Crear una función constructor Accumulator(startingValue).
+
+El objeto que crea debería:
+
+Almacene el “valor actual” en la propiedad value. El valor inicial se establece en el argumento del constructor startingValue.
+El método read() debe usar prompt para leer un nuevo número y agregarlo a value.
+En otras palabras, la propiedad value es la suma de todos los valores ingresados por el usuario con el valor inicial startingValue.
+
+Aquí está la demostración del código:
+ */
+
+function Accumulator(startingValue){
+    this.value = startingValue;
+
+    this.read= function(){
+        this.newValue= +prompt("Digite numero a sumar");
+        alert(this.value+=this.newValue);
+    }
+
+}
+
+let accumulator= new Accumulator(1);
+accumulator.read();
+accumulator.read();
+alert(accumulator.value);
+
