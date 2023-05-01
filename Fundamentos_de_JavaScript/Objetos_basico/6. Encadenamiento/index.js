@@ -189,3 +189,7 @@ console.log(user9?.[key]);
 delete user9?.firstName
 
 console.log(user9)
+
+
+// aqui elemina la propiedad firstName si el objto user9 existe.
+
