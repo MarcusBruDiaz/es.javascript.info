@@ -497,3 +497,165 @@ list.next.next.next.next = null;
 
 list1={value:"new item", next:list1};
 console.log(list1)
+
+
+/* TAREAS */
+
+
+/* 
+Suma todos los números hasta el elegido
+importancia: 5
+Escribe una función sumTo(n) que calcule la suma de los números 1 + 2 + ... + n.
+
+Por ejemplo: 
+
+
+sumTo(1) = 1
+sumTo(2) = 2 + 1 = 3
+sumTo(3) = 3 + 2 + 1 = 6
+sumTo(4) = 4 + 3 + 2 + 1 = 10
+...
+sumTo(100) = 100 + 99 + ... + 2 + 1 = 5050
+
+
+*/
+
+//solucion con bucle for
+
+function sumTo(n){
+  let sum=0;
+  for(let i=0;i<=n;i++){
+    sum+=i;
+  }
+  return sum;
+}
+
+console.log(sumTo(2));// output 3
+
+
+//solcuion con recursividad
+
+
+function sumTo1(n){  // context 2 line1// context 1 line 1
+  let sum=0;
+  if(n==1) return n;
+
+ 
+  sum = n + sumTo1(n-1); // context 2 line 4 // 
+  
+  
+
+  return sum;
+
+}
+
+console.log(sumTo1(100));// output 3
+
+
+// progresion aritmetica:
+
+function sumTo2(n){
+  return n *(n+1)/2;
+
+}
+
+console.log(sumTo2(2));
+
+
+/* 
+Calcula el factorial
+importancia: 4
+El factorial de un número natural es un número multiplicado por "número menos uno", luego por "número menos dos", y así sucesivamente hasta 1. El factorial de n se denota como n!
+
+Podemos escribir la definición de factorial así:
+
+
+n! = n * (n - 1) * (n - 2) * ...*1
+
+Valores de factoriales para diferentes n:
+
+1! = 1
+2! = 2 * 1 = 2
+3! = 3 * 2 * 1 = 6
+4! = 4 * 3 * 2 * 1 = 24
+5! = 5 * 4 * 3 * 2 * 1 = 120
+
+La tarea es escribir una función factorial(n) que calcule n! usando llamadas recursivas.
+
+*/
+
+
+
+function factorial(n){
+
+  if(n==1) return n;
+  return n*factorial(n-1)
+
+}
+
+console.log(factorial(2))
+console.log(factorial(3))
+console.log(factorial(4))
+console.log(factorial(5))
+
+
+
+
+/* Sucesión de Fibonacci
+importancia: 5
+La secuencia de sucesión de Fibonacci tiene la fórmula Fn = Fn-1 + Fn-2. En otras palabras, el siguiente número es una suma de los dos anteriores.
+
+Los dos primeros números son 1, luego 2(1+1), luego 3(1+2), 5(2+3) y así sucesivamente: 1, 1, 2, 3, 5, 8, 13, 21....
+
+La sucesión de Fibonacci está relacionada la proporción áurea y muchos fenómenos naturales alrededor nuestro.
+
+Escribe una función fib(n) que devuelve la secuencia n-th de Fibonacci.
+
+Un ejemplo de trabajo:  */
+
+//function fib(n) { /* your code */ }
+
+//alert(fib(3)); // 2
+//alert(fib(7)); // 13
+
+//alert(fib(77)); // 5527939700884757
+
+
+
+//pendiente hacer
+/* function fib(n){
+
+  
+
+
+}
+ */
+
+/* Generar una lista de un solo enlace
+importancia: 5
+Digamos que tenemos una lista de un solo enlace (como se describe en el capítulo Recursión y pila):
+
+ */
+
+let list2 = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+function printLIst(list){
+  let obj={}
+  for(let ob in Object.values(list)){
+    console.log(ob);
+  }
+}
+
+printLIst(list2);
